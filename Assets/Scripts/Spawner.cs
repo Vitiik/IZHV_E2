@@ -76,6 +76,8 @@ public class Spawner : MonoBehaviour
                 
                 SpawnObstacle();
             }
+            spawnFrequencyMean -= Time.deltaTime / 10f;
+            spawnFrequencyMean = Math.Clamp(spawnFrequencyMean,0.1f,10f);
         }
     }
 

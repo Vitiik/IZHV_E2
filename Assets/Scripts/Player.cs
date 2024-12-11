@@ -123,14 +123,14 @@ public class Player : MonoBehaviour
         var onGround = IsOnGround();
         
         // Reset gravity switch if we are on the ground.
-        mSwitchedGravity &= !onGround;
+        //mSwitchedGravity &= !onGround;
 
         // Impart the initial impulse if we are jumping.
         if (jumpMovement && onGround)
         { mRB.velocity = -Physics2D.gravity * jumpVelocity; }
         
         // Switch gravity with vertical movement.
-        if (verticalMovement != 0.0 && !mSwitchedGravity)
+        if (verticalMovement != 0.0)
         {
             mCurrentGravity = verticalMovement > 0.0f ? 1.0f : -1.0f;
             Physics2D.gravity = mCurrentGravity * new Vector2(
@@ -142,7 +142,6 @@ public class Player : MonoBehaviour
                 rotateAxis.y && mCurrentGravity > 0.0f ? 180.0f : 0.0f, 
                 rotateAxis.z && mCurrentGravity > 0.0f ? 180.0f : 0.0f
             ) * axisDirection);
-            mSwitchedGravity = true;
         }
     }
 
